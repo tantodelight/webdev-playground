@@ -1,0 +1,30 @@
+button {
+  outline: none;
+}
+button:focus {
+  outline: none;
+}
+
+.active-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: radial-gradient(circle, yellow, red);
+}
+
+.active {
+  width: 10rem;
+  height: 3rem;
+  background-color: blue;
+  color: red;
+  font-weight: bold;
+  font-size: 1rem;
+  border-radius: 10px;
+  border: 2px solid hsl(180, 100%, 50%);
+}
+.active2 {
+  background-color: blue;
+  font-size: 1rem;
+  font-weight: bold;
+  color: yellow;
+} 
