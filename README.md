@@ -1,5 +1,3 @@
 # webdev-playground
 
-Just a space for small web projects, experiments, and practice.
-
-Figuring things out as I go.
+A collection of small web projects, practice exercises, and experiments.
