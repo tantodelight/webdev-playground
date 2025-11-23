@@ -1,6 +1,6 @@
-## Rock Paper Scissors
+# Rock Paper Scissors
 
-A basic Rock Paper Scissors game built as part of The Odin Project curriculum. This project focuses on practicing control flow and core JavaScript fundamentals.
+A simple interactive Rock Paper Scissors game built with HTML, CSS, and JavaScript.  
+Click buttons to play, see the result, and track scores.
 
-### How to Run
-Open the JavaScript file in the browser console or run it with Node.js. The game prompts for number of rounds and logs results after each round.
+View live [here](https://tantodelight.github.io/webdev-playground/odin-rock-paper-scissors/)

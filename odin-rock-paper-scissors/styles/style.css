@@ -1,0 +1,132 @@
+/* styles/style.css */
+
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif; /* bold & readable */
+}
+
+body {
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a); /* dark cosmic feel */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* Title */
+.title {
+  font-size: 3rem;
+  font-weight: 900;
+  text-shadow: 0 0 10px #00f0ff, 0 0 20px #ff00ff;
+  margin-bottom: 25px;
+  animation: bounceTitle 1s infinite alternate;
+  text-align: center;
+}
+
+/* Sections */
+.sect1, .sect2 {
+  background: rgba(0,0,0,0.6);
+  border-radius: 20px;
+  padding: 25px;
+  margin-bottom: 25px;
+  width: 90%;
+  max-width: 450px;
+  text-align: center;
+  box-shadow: 0 5px 25px rgba(0,0,0,0.7);
+  backdrop-filter: blur(5px);
+}
+
+/* Instructions */
+.instruction {
+  font-size: 1.3rem;
+  margin-bottom: 15px;
+  color: #fff;
+  text-shadow: 0 0 8px #00f0ff;
+}
+
+/* Buttons */
+.buttons button {
+  font-size: 1.4rem;
+  margin: 10px;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+  background: linear-gradient(145deg, #00f0ff, #ff00ff);
+  color: #fff;
+  font-weight: 700;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.5), 0 0 10px #00f0ff;
+}
+
+.buttons button:hover {
+  transform: scale(1.2) rotate(-5deg);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.7), 0 0 15px #ff00ff;
+  filter: brightness(1.2);
+}
+
+/* Matchup & result */
+.matchUp, .winOrLose {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 12px 0;
+  text-shadow: 0 0 10px #00ffea, 0 0 15px #ff00ff;
+  animation: popIn 0.4s ease;
+}
+.win {
+  color: chartreuse;
+}
+.lose {
+  color: red;
+}
+
+/* Replay button */
+.replay {
+  margin-top: 15px;
+  font-size: 1.5rem;
+  padding: 12px 25px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  background: linear-gradient(145deg, #ffbf00, #ff4f81);
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5), 0 0 10px #ffbf00;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.replay:hover {
+  transform: scale(1.2);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.7), 0 0 15px #ff4f81;
+}
+
+/* Scoreboard */
+.scoreBoard {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #00fff0;
+  text-shadow: 0 0 8px #00fff0, 0 0 12px #ff00ff;
+  margin-top: 10px;
+}
+
+/* Hidden */
+.hidden {
+  display: none;
+}
+
+/* Animations */
+@keyframes bounceTitle {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-20px); }
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
