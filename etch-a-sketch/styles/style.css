@@ -1,0 +1,67 @@
+/* Reset default spacing and sizing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Center content and set warm background */
+body {
+  width: 100vw;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fffff0;
+}
+
+/* Buttons container and spacing */
+.resize-btn {
+  margin-bottom: 20px;
+}
+
+/* Make a proper responsive grid */
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  width: 65%;
+  max-width: 600px;
+  border: 2px solid black;
+  background: white;
+}
+
+/* Each cell stays square */
+.cell {
+  flex: 0 0 calc(100% / 16);
+  aspect-ratio: 1 / 1;
+}
+
+/* Clear button spacing */
+.clear-btn {
+  margin-top: 20px;
+}
+
+/* Minimal button styling with hover & click feedback */
+.resize-btn, .clear-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  background-color: #ffffff;
+  border: 1px solid #d0d0d0;
+  border-radius: 4px; 
+  cursor: pointer; 
+  transition: background 0.2s, transform 0.1s; 
+}
+
+/* Hover effect for buttons */
+.resize-btn:hover,
+.clear-btn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.03);
+}
+
+/* Click/active effect for buttons */
+.resize-btn:active,
+.clear-btn:active {
+  background-color: #e0e0e0;
+  transform: scale(0.97);   
+}
