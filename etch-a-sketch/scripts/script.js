@@ -1,5 +1,7 @@
 const grid = document.querySelector(".grid");
 
+const rainbowBtn = document.querySelector(".rainbow-btn");
+
 function getRandomRgbValue() {
     const r = Math.floor(Math.random() * 256);
     const g = Math.floor(Math.random() * 256);
@@ -16,7 +18,7 @@ grid.addEventListener("mouseover", (e) => {
     if (!e.target.classList.contains("cell")) {
         return;
     } 
-    if (e.target.classList.contains("rainbow-mode")) {
+    if (rainbowBtn.classList.contains("active-rainbow-btn")) {
         e.target.style.background = getRandomRgbValue();
     } else {
         e.target.style.background = "black";
@@ -31,6 +33,7 @@ grid.addEventListener("mouseover", (e) => {
 
 function createGrid(size) {
     grid.innerHTML = "";
+    rainbowBtn.classList.remove("active-rainbow-btn");
 
     // create temporary container outside DOM
     const fragment = document.createDocumentFragment();
@@ -79,8 +82,6 @@ document.querySelector(".clear-btn").addEventListener("click", () => {
 });
 
 // activate rainbow paint
-const rainbowBtn = document.querySelector(".rainbow-btn");
 rainbowBtn.addEventListener("click", () => {
-    grid.querySelectorAll(".cell").forEach(c => c.classList.toggle("rainbow-mode"));
     rainbowBtn.classList.toggle("active-rainbow-btn");
 });
