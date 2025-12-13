@@ -1,0 +1,77 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-size: 18px;
+  min-height: 100vh;
+  width: 100vw;
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  border: 1px solid black;
+  width: 80vw;
+  max-width: 400px;
+  padding: 16px;
+  border-radius: 10px;
+}
+
+.displayScreen {
+  margin: 5px 5px 12px 5px;
+  width: (100% - 10px);
+  min-height: 100px;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px;
+}
+.screen1, .screen2 {
+  font-size: 16px;
+  margin-left: auto;
+  width: fit-content;
+}
+.screen2 {
+  margin-top: 16px;
+  font-size: 32px;
+  font-weight: bod;
+}
+
+
+/* create grid look */
+/* flex: 100% - (margin x 4) / (box per row) */
+.btnContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.clearBtn, .deleteBtn {
+  flex: 0 0 calc((100% - 20px) / 2);
+  aspect-ratio: 2.2 / 0.7;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.operations {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.operations div {
+  flex: 0 0 calc((100% - 40px) / 4);
+  aspect-ratio: 1.2 / 1;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+/* center the button contents */
+.operations div, .deleteBtn, .clearBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+}
