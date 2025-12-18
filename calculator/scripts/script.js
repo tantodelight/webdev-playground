@@ -1,3 +1,8 @@
+// prevent highlighting on page
+document.addEventListener('selectstart', (e) => {
+  e.preventDefault();
+});
+
 let currentNumber = '';
 let previousNumber = '';
 let opSign = '';
