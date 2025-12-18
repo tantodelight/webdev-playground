@@ -1,90 +1,129 @@
+/* Reset & Base */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  font-size: 18px;
-  min-height: 100vh;
-  width: 100vw;
-  padding: 1rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    font-size: 18px;
+    min-height: 100vh;
+    width: 100vw;
+    padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* Calculator Container */
 .container {
-  border: 3px solid black;
-  width: 80vw;
-  max-width: 400px;
-  padding: 16px;
-  border-radius: 20px;
+    width: 80vw;
+    max-width: 400px;
+    padding: 16px;
+    border-radius: 20px;
+    background-color: #111111; /* Matte black */
+    border: none;
 }
 
+/* Display Screen */
 .displayScreen {
-  margin: 5px 5px 12px 5px;
-  width: (100% - 10px);
-  min-height: 115px;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 20px;
+    margin: 5px 5px 12px 5px;
+    min-height: 115px;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #000000; /* true black */
+    color: #39ff14; /* neon green */
+    font-family: 'Orbitron', monospace;
 }
+
 .screen1, .screen2 {
-  font-size: 16px;
-  text-align: right;
-  width: 100%;
-  word-wrap: break-word;
+    font-size: 16px;
+    text-align: right;
+    width: 100%;
+    word-wrap: break-word;
+    font-family: 'Orbitron', monospace;
 }
+
 .screen2 {
-  margin-top: 16px;
-  font-size: 32px;
+    margin-top: 16px;
+    font-size: 24px;
 }
 
-
-/* create grid look */
-/* flex: 100% - (margin x 4) / (box per row) */
+/* Button Container */
 .btnContainer {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
+
 .clearBtn, .deleteBtn {
-  flex: 0 0 calc((100% - 20px) / 2);
-  aspect-ratio: 2.2 / 0.7;
-  border: 1px solid black;
-  margin: 5px;
+    flex: 0 0 calc((100% - 20px) / 2);
+    aspect-ratio: 2.2 / 0.7;
+    margin: 5px;
 }
 
+/* Operations Grid */
 .operations {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-}
-.operations div {
-  flex: 0 0 calc((100% - 40px) / 4);
-  aspect-ratio: 1 / 1;
-  border: 1px solid black;
-  margin: 5px;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
-/* center the button contents */
+.operations div {
+    flex: 0 0 calc((100% - 40px) / 4);
+    aspect-ratio: 1 / 1;
+    margin: 5px;
+}
+
+/* Buttons Styling */
 .operations div, .deleteBtn, .clearBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50px;
-  transition: background 0.2s, transform 0.1s; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    background-color: #222222; /* dark gray */
+    color: #39ff14; /* neon green text */
+    border: none;
+    transition: background 0.2s, transform 0.1s; 
 }
 
 .operations div:active,
 .deleteBtn:active,
 .clearBtn:active {
-  background-color: aqua;
-  transform: scale(0.97); 
+    background-color: #333333; /* slightly lighter when pressed */
+    transform: scale(0.97);
 }
 
-
-.error {
-  color: red;
+/* Buttons 3D effect */
+.operations div, .deleteBtn, .clearBtn {
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    box-shadow: 3px 3px 6px #0a0a0a, -3px -3px 6px #333333;
+    color: #39ff14;
+    border: none;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s, transform 0.1s, box-shadow 0.1s;
 }
+
+.operations div:active,
+.deleteBtn:active,
+.clearBtn:active {
+    box-shadow: inset 2px 2px 4px #0a0a0a, inset -2px -2px 4px #333333;
+    transform: scale(0.97);
+}
+
+/* Display screen 3D + glow */
+.displayScreen {
+    background-color: #000000;
+    color: #39ff14;
+    font-family: 'Orbitron', monospace;
+    box-shadow: inset 0 0 10px #0f0, 0 4px 8px #000;
+}
+
+/* Neon text glow */
+.screen2 {
+    text-shadow: 0 0 6px #39ff14, 0 0 12px #0f0;
+}
+
