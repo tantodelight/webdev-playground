@@ -1,0 +1,149 @@
+/* reset */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outlne: 1px solid red;
+}
+
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+input, button, textarea, select {
+  font: inherit;
+}
+
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+/* styles */
+body {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.hero-image-holder {
+  width: 40vw;
+  height: 100%;
+  position: relative;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.logo-div {
+  width: 100%;
+  height: 20%;
+  background-color: rgba(30, 30, 30, 0.5);
+  position: absolute;
+  top: 23%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.logo {
+  object-fit: contain;
+}
+
+.logo-text {
+  color: white;
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.credit {
+  width: 100%;
+  position: absolute;
+  bottom: 10px;
+  color: white;
+  text-align: center;
+}
+
+.hero-section {
+  height: 100%;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #f5f5f5;
+}
+
+.section1 {
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  padding: 30px;
+  gap: 20px;
+}
+
+.section2 {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  padding: 10px 30px;
+  gap: 20px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+form {
+  display: flex;
+  gap: 40px;
+}
+
+label {
+  font-size: 0.7rem;
+}
+
+input {
+  display: block;
+  margin-bottom: 20px;
+  border: 1px solid #E5E7EB;
+  padding: 2px;
+  border-radius: 3px;
+}
+
+input:focus {
+  outline: 1px solid blue;
+  border-color: darkgrey;
+}
+
+input:invalid {
+  border-color: red;
+  outline-color: rgba(255, 0, 0, 0.5);
+}
+
+.section3 {
+  padding: 30px;
+}
+
+#submit-btn {
+  padding: 10px 40px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+  background-color: #596D48;
+  margin-bottom: 30px;
+  border: none;
+}
+
+.login-link {
+  font-weight: bold;
+}
+
+.login-link:link {
+  color: #596D48;
+  text-decoration: none;
+}
