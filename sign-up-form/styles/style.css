@@ -1,3 +1,12 @@
+@font-face {
+    font-family: 'Norse';
+    src: url('../fonts/Norse-Bold.woff2') format('woff2'),
+        url('../fonts/Norse-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* reset */
 *, *::before, *::after {
   box-sizing: border-box;
@@ -6,7 +15,6 @@
 * {
   margin: 0;
   padding: 0;
-  outlne: 1px solid red;
 }
 
 img, picture, video, canvas, svg {
@@ -27,7 +35,7 @@ body {
   height: 100%;
   width: 100%;
   display: flex;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
 }
 
 .hero-image-holder {
@@ -60,8 +68,10 @@ img {
 
 .logo-text {
   color: white;
+  font-size: clamp(3rem, 5vw, 8rem);
   font-weight: bold;
-  font-size: 2rem;
+  font-family: 'Norse', sans-serif;
+  letter-spacing: 2px;  
 }
 
 .credit {
@@ -85,7 +95,7 @@ img {
   display: flex;
   flex-direction: column;
   font-weight: bold;
-  padding: 30px;
+  padding: 30px 50px;
   gap: 20px;
 }
 
@@ -93,7 +103,7 @@ img {
   display: flex;
   flex-direction: column;
   background-color: white;
-  padding: 10px 30px;
+  padding: 10px 50px;
   gap: 20px;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1);
 }
@@ -104,14 +114,14 @@ form {
 }
 
 label {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
 }
 
 input {
   display: block;
   margin-bottom: 20px;
   border: 1px solid #E5E7EB;
-  padding: 2px;
+  padding: 8px;
   border-radius: 3px;
 }
 
@@ -126,7 +136,7 @@ input:invalid {
 }
 
 .section3 {
-  padding: 30px;
+  padding: 30px 50px;
 }
 
 #submit-btn {
