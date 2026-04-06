@@ -120,19 +120,24 @@ label {
 input {
   display: block;
   margin-bottom: 20px;
-  border: 1px solid #E5E7EB;
+  border: 2px solid #ccc;
+  outline: none;  
   padding: 8px;
   border-radius: 3px;
+  transition: border-color 0.3s;  
+}
+
+input:user-valid {
+  border-color: #28a745;
+}
+
+input:user-invalid {
+  border-color: #dc3545;
 }
 
 input:focus {
-  outline: 1px solid blue;
-  border-color: darkgrey;
-}
-
-input:invalid {
-  border-color: red;
-  outline-color: rgba(255, 0, 0, 0.5);
+  border-color: #007bff;
+  outline: none;
 }
 
 .section3 {
