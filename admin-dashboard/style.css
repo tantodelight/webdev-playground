@@ -89,6 +89,7 @@ svg {
     display: grid;
     grid-template: max-content / repeat(2, max-content);
     gap: 10px;
+    align-items: center;
 }
 
 .user-profile-menu {
@@ -100,17 +101,24 @@ svg {
 
 .search-input {
     background-color: rgb(236, 231, 231);
-    height: 20px;
-    width: 600px;
+    height: 25px;
+    width: 50vw;
+    max-width: 600px;
     padding: 0 12px;
-    white-space: nowrap;
-    overflow: hidden;
     outline: none;
     border-radius: 10px;
     font-size: 12px;
-    display: flex;
-    align-items: center;
+    color: black;
+    line-height: 25px;
+    white-space: nowrap;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
 }
+
+.search-input:focus {
+    box-shadow: 0 0 0 2px rgba(43, 163, 237, 0.4);
+}
+
 
 .avatar-sm {
     width: 30px;
@@ -265,5 +273,5 @@ svg {
 }
 
 * {
-    outlne: 1px solid red;
+    outline: 1px
 }
