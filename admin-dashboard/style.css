@@ -1,0 +1,269 @@
+/* css reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* css styles */
+html {
+    height: 100%;
+}
+
+body {
+    font-family: "Roboto", sans-serif;
+    height: 100%;
+    display: grid;
+    grid-template: 1.7fr 8.3fr / 1.5fr 8.5fr;
+    color: white;
+    font-size: 16px;
+}
+
+.sidebar-container {
+    font-weight: bold;
+    background-color: rgb(43, 163, 237);
+    grid-row: 1 / 3;
+}
+
+.dashboard-icon {
+    width: 34px;
+    height: 34px;
+    fill: currentColor;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+svg {
+    width: 18px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.sidebar-brand-group {
+    font-size: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    gap: 13px;
+    margin-top: 20px;
+    margin-left: 12px;
+}
+
+.nav-primary-group {
+    display: grid;
+    grid-template: repeat(6, max-content) / repeat(2, max-content);
+    gap: 20px;
+    margin-left: 20px;
+}
+
+.nav-secondary-group {
+    display: grid;
+    grid-template: repeat(3, max-content) / repeat(2, max-content);
+    gap: 20px;
+    margin-left: 20px;
+}
+
+.sidebar-container > div {
+    margin-bottom: 50px;
+    align-items: center;
+}
+
+.top-header {
+    color: black;
+    padding: 10px 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.header-search-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.search-container {
+    display: grid;
+    grid-template: max-content / repeat(2, max-content);
+    gap: 10px;
+}
+
+.user-profile-menu {
+    display: grid;
+    grid-template: max-content / repeat(3, max-content);
+    gap: 20px;
+    align-items: center;
+}
+
+.search-input {
+    background-color: rgb(236, 231, 231);
+    height: 20px;
+    width: 600px;
+    padding: 0 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    outline: none;
+    border-radius: 10px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+}
+
+.avatar-sm {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.welcome-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.avatar-lg {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.greeting-text {
+    font-size: 12px;
+}
+
+.user-info-group {
+    display: flex;
+    align-items: center;
+}
+
+.greeting-box {
+    margin-left: 10px;
+}
+
+.action-buttons-group {
+    display: grid;
+    grid-template: max-content / repeat(3, max-content);
+    gap: 10px;
+    text-align: center;
+}
+
+.action-buttons-group > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    font-weight: bold;
+    width: 60px;
+    height: 25px;
+    color: white;
+    background-color: rgb(43, 163, 237);
+    border-radius: 20px;
+}
+
+.dashboard-main {
+    background-color: rgb(217, 224, 224);
+    display: grid;
+    grid-template: 1fr / 8fr 2fr;
+    padding: 20px 10px 40px 10px;
+    color: black;
+}
+
+.section-title {
+    font-weight: bold;
+}
+
+.projects-section-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 10px;
+}
+
+.projects-grid {
+    flex-grow: 1;
+    display: grid;
+    grid-template: 1fr 1fr 1fr / 1fr 1fr;
+    gap: 30px; 
+}
+
+.project-card {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 6px;
+    background-color: white;
+    border-left: 6px solid orange;
+}
+
+.project-actions-row {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 15px;
+}
+
+.project-title {
+    font-weight: bold;
+}
+
+.sidebar-right-column {
+    padding-left: 30px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    gap: 30px;   
+}
+
+.announcements-container,
+.trending-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.announcements-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-size: 10px;
+}
+
+.announcements-card > div > p:first-child {
+    font-weight: bold;
+}
+
+.announcements-card .line {
+    border-bottom: 1px solid rgb(174, 168, 168);
+}
+
+.announcements-card,
+.trending-grid {
+    background-color: white;
+    padding: 20px;
+    border-radius: 6px;
+    flex-grow: 1;
+}
+
+.trending-grid {
+    font-size: 11px;
+    display: grid;
+    grid-template: repeat(4, 1fr) / 1fr 3fr;
+    align-items: center;
+    gap: 10px;
+}
+
+.trending-container .avatar-sm {
+    justify-self: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+* {
+    outlne: 1px solid red;
+}
