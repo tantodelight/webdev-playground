@@ -1,12 +1,6 @@
 const gridContainer = document.querySelector(".grid-container");
 
-const myLibrary = [
-    new Book("The Hobbit", "J.R.R. Tolkien", 310, true),
-    new Book("1984", "George Orwell", 328, false),
-    new Book("To Kill a Mockingbird", "Harper Lee", 281, true),
-    new Book("Short", "A. Smith", 45, false),
-    new Book("Edge & Case #101!", "Special Author-Name", 9999, true)
-];
+let myLibrary = [];
 
 function Book(title, author, pages, isRead) {
     this.title = title,
@@ -32,13 +26,61 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function displayBooks() {
+    gridContainer.textContent = '';
+
+    // create column heads
+    const titleHead = document.createElement('div');
+    const authorHead = document.createElement('div');
+    const pagesHead = document.createElement('div');
+    const readStatusHead = document.createElement('div');
+    const lastHead = document.createElement('div');
+
+    titleHead.textContent = 'Title';
+    authorHead.textContent = 'Author';
+    pagesHead.textContent = 'Pages';
+    readStatusHead.textContent = 'Read Status';
+
+    gridContainer.append(titleHead, authorHead, pagesHead, readStatusHead, lastHead);
+
+    // create book data
     for (const item of myLibrary) {
+        const title = document.createElement('div');
+        const author = document.createElement('div');
+        const pages = document.createElement('div');
+        const readStatus = document.createElement('div');
+
+        // add remove button
+        const removeBtn = document.createElement('div');
+        removeBtn.classList.add('remove-btn');
+        removeBtn.id = item.id;
         
+        title.textContent = item.title;
+        author.textContent = item.author;
+        pages.textContent = item.pages;
+        readStatus.textContent = item.isRead;
+        removeBtn.textContent = '❌';
+
+        gridContainer.append(title, author, pages, readStatus, removeBtn);
     }
 }
 
-// Testing
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
-//const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, false);
+function addRemoveBtnListener() {
+    gridContainer.addEventListener('click', (e) => {
+        if (e.target.classList.contains('remove-btn')) {
+            discardBook(e);
+            displayBooks();
+        }
+    })
+}
 
-console.log(myLibrary[0].id);
+function discardBook(e) {
+    myLibrary = myLibrary.filter(item => item.id !== e.target.id);
+}
+
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, true)
+addBookToLibrary("1984", "George Orwell", 328, false)
+addBookToLibrary("Short", "A. Smith", 45, false)
+addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, true)
+
+displayBooks();
+addRemoveBtnListener()
