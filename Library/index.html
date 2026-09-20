@@ -13,21 +13,26 @@
 
   </div>
 
-  <dialog id="book-dialog">
+  <dialog class="book-dialog">
     <form id="book-form">
       <h3>Enter Details of New Book</h3>
 
-      <label for="title">Title:</label>
-      <input type="text" id="title" name="title" required>
-
-      <label for="author">Author:</label>
-      <input type="text" id="author" name="author" required>
-
-      <label for="pages">Pages:</label>
-      <input type="number" id="pages" name="pages" min="0" required>
-
-      <label for="read">Read Status:</label>
-      <input type="checkbox" id="read" name="read">
+      <label>
+        Title:
+        <input type="text" id="title" name="title" required>
+      </label>
+      <label>
+        Author:
+        <input type="text" id="author" name="author" required>
+      </label>
+      <label>
+        Pages:
+        <input type="number" id="pages" name="pages" min="0" required>
+      </label>
+      <label>
+        Read Status(select if read):
+        <input type="checkbox" id="read" name="read">
+      </label>
 
       <div class="button-group">
         <button type="submit" id="submit-btn">Submit</button>
@@ -36,12 +41,14 @@
     </form>
   </dialog>
 
-  <dialog id="read-dialog">
+  <dialog class="read-dialog">
     <form id="read-form">
       <h3>Change Read Status</h3>
 
-      <label for="read-status">Read:</label>
-      <input type="checkbox" id="read-status" name="read-status">
+      <label>
+        Read:
+        <input type="checkbox" id="read-status" name="read-status">
+      </label>
 
       <div class="button-group">
         <button type="submit" id="update-btn">Update</button>
@@ -50,6 +57,6 @@
     </form>
   </dialog>
 
-  <button id="new-book-btn">New Book</button>
+  <button class="new-book-btn">New Book</button>
 </body>
 </html>

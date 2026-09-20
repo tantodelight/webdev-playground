@@ -1,15 +1,15 @@
 const gridContainer = document.querySelector(".grid-container");
 
-const bookDialog = document.querySelector('#book-dialog');
+const bookDialog = document.querySelector('.book-dialog');
 const bookForm = document.querySelector('#book-form');
 const title = document.querySelector('#title');
 const author = document.querySelector('#author');
 const pages = document.querySelector('#pages');
 const read = document.querySelector('#read');
 const cancelBtn = document.querySelector('#cancel-btn');
-const newBookBtn = document.querySelector('#new-book-btn');
+const newBookBtn = document.querySelector('.new-book-btn');
 
-const readDialog = document.querySelector('#read-dialog');
+const readDialog = document.querySelector('.read-dialog');
 const readForm = document.querySelector('#read-form');
 const readStatus = document.querySelector('#read-status');
 const updateBtn = document.querySelector('#update-btn');
@@ -53,7 +53,7 @@ gridContainer.addEventListener('click', (e) => {
 
     if (e.target.classList.contains('read-status')) {
         readDialog.showModal();
-        readFormInput = e.target.id;
+        readFormInput = [...e.target.classList].find(className => className.startsWith('book-id-'));
     }
 })
 
@@ -106,12 +106,12 @@ function displayBooks() {
         const pages = document.createElement('div');
         const read = document.createElement('div');
         read.classList.add('read-status');
-        read.id = item.id;
+        read.classList.add(`book-id-${item.id}`);
 
         // add remove button
         const removeBtn = document.createElement('div');
         removeBtn.classList.add('remove-btn');
-        removeBtn.id = item.id;
+        removeBtn.classList.add(`book-id-${item.id}`);
         
         title.textContent = item.title;
         author.textContent = item.author;
@@ -124,11 +124,14 @@ function displayBooks() {
 }
 
 function discardBook(e) {
-    myLibrary = myLibrary.filter(item => item.id !== e.target.id);
+    const bookClass = [...e.target.classList].find(className => className.startsWith('book-id-'));
+    const bookId = bookClass.replace('book-id-', '');
+    myLibrary = myLibrary.filter(item => item.id !== bookId);
 }
 
 function updateReadStatus(readFormInput) {
-    const bookToUpdate = myLibrary.find(item => item.id === readFormInput);
+    const bookId = readFormInput.replace('book-id-', '');
+    const bookToUpdate = myLibrary.find(item => item.id === bookId);
     bookToUpdate.isRead = readStatus.checked;
     displayBooks();
     readForm.reset();

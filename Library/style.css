@@ -1,21 +1,240 @@
-/* css reset */
+:root { 
+  --primary-color: green; 
+  --secondary-color: red;
+  --border-color: green;
+  --scrollbar-track: #e1f0e1;
+  --scrollbar-thumb: #73b873;
+  --scrollbar-thumb-hover: #4f9f4f;
+}
 
+/* css reset */
 * {
-  padding: 0;
   margin: 0;
+  padding: 0;
   box-sizing: border-box;
-  outline: 1px solid red;
+  /* outline: 1px solid red; */
 }
 
 /* styles */
-
 body {
-  padding: 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: aliceblue;
+}
+
+body > h1 {
+  color: var(--secondary-color);
+  margin-bottom: 20px;
 }
 
 .grid-container {
+  width: 80vw;
+  max-width: 900px;
+  background-color: azure;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 40px;
+  grid-template-columns: repeat(4, minmax(150px, 1fr)) minmax(75px, 0.5fr);
+  grid-template-rows: 50px;
   grid-auto-rows: 50px;
+  border: 2px solid var(--border-color);
+  overflow-x: auto;
+  overflow-y: visible;
+}
+
+.grid-container div {
+  min-width: 0;
+  padding: 15px;
+  display: grid;
+  place-items: center;
+  border-left: 2px solid var(--border-color);
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.grid-container div:nth-child(-n + 5) {
+  font-weight: bold;
+  color: white;
+  border-bottom: 2px solid var(--border-color);
+  background: var(--primary-color);
+}
+
+.grid-container div:nth-child(5n + 6) {
+  border-left: none;
+}
+
+.new-book-btn {
+  width: 20vw;
+  min-width: 150px;
+  max-width: 200px;
+  height: 30px;
+  border-radius: 6px;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: bold;
+  border: 1px solid var(--border-color);
+  margin-top: 20px;
+}
+
+dialog {
+  margin: auto;
+}
+
+dialog::backdrop {
+  background: rgb(0 0 0 / 45%);
+}
+
+dialog[open] {
+  animation: dialog-in 160ms ease-out;
+}
+
+.book-dialog[open] {
+  width: 90vw;
+  max-width: 600px;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+}
+
+#book-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+}
+
+#book-form h3 {
+  text-align: center;
+}
+
+#book-form label {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  grid-template-rows: max-content;
+  gap: 10px;
+}
+
+#book-form #read {
+  justify-self: flex-start;
+  width: 20px;
+}
+
+#book-form .button-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 10px;
+  padding: 10px;
+} 
+
+#book-form #submit-btn,
+#book-form #cancel-btn {
+  border: none;
+  color: white;
+  font-weight: bold;
+  background-color: var(--primary-color);
+  width: 20vw;
+  max-width: 200px;
+  height: 30px;
+  border-radius: 8px;
+}
+
+#book-form #cancel-btn {
+  background-color: var(--secondary-color);
+}
+
+
+#book-form input[type="text"],
+.book-fields input[type="number"] {
+  width: 100%;
+  min-width: 0;
+  padding: 2px;
+  outline: red;
+}
+
+.read-dialog[open] {
+  width: 80vw;
+  max-width: 300px;
+  display: grid;
+  place-content: center;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+
+#read-form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#read-form label {
+  display: grid;
+  grid-template: max-content / max-content minmax(max-content, 1fr);
+  gap: 10px;
+}
+
+#read-form h3 {
+  text-align: center;
+}
+
+#read-status {
+  width: 20px;
+  justify-self: flex-start;
+}
+
+#read-form .button-group {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+#read-form #update-btn,
+#read-form #cancel-read-btn {
+  width: 100px;
+  background-color: var(--primary-color);
+  height: 30px;
+  color: white;
+  font-weight: bold;
+  border-radius: 8px;
+  border: none;
+}
+
+#read-form #cancel-read-btn {
+  background-color: var(--secondary-color)
+}
+
+/* scrollbar styles for grid-container and its child divs */
+.grid-container::-webkit-scrollbar {
+  height: 4px;
+}
+
+.grid-container div::-webkit-scrollbar {
+  height: 4px;
+}
+
+.grid-container::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
+}
+
+.grid-container::-webkit-scrollbar-track,
+.grid-container div::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+}
+
+.grid-container::-webkit-scrollbar-thumb:hover,
+.grid-container div::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+}
+
+.grid-container div::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 4px;
 }
