@@ -1,4 +1,5 @@
 const board = document.querySelector('.grid-container');
+const restartButton = document.querySelector('.restart-btn');
 
 board.addEventListener('click', (event) => {
     const clickedCell = event.target;
@@ -9,6 +10,10 @@ board.addEventListener('click', (event) => {
     if (index !== -1) {
         playRound(index);
     }
+});
+
+restartButton.addEventListener('click', () => {
+    resetGame();
 });
 
 const gameboard = [
@@ -60,6 +65,17 @@ let currentPlayer = "X";
 let isGameOver = false;
 let gameOutput = `Player ${currentPlayer}'s turn.`;
 
+function resetGame() {
+    for (let i = 0; i < gameboard.length; i++) {
+        gameboard[i] = '';
+    }
+
+    currentPlayer = 'X';
+    isGameOver = false;
+    gameOutput = `Player ${currentPlayer}'s turn.`;
+    displayGame();
+}
+
 // print board
 function printBoard() {
     for (let i = 0; i < gameboard.length; i += 3) {
@@ -69,7 +85,7 @@ function printBoard() {
 
 function playRound(index) {
     if (isGameOver) {
-        gameOutput = "The game is already over!";
+        gameOutput = "Game Over! Restart ↻";
         displayGame();
         return;
     }
@@ -115,6 +131,10 @@ function playRound(index) {
 function displayGame() {
     const output = document.querySelector('.output');
     output.textContent = gameOutput;
+
+    restartButton.style.display = isGameOver ? 'block' : 'none';
+    restartButton.textContent = 'Game Over! Restart ↻';
+
     const slots = [
         document.querySelector('.slot1'),
         document.querySelector('.slot2'),
