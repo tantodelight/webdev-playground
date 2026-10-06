@@ -1,0 +1,44 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+h1 {
+    color: blue;
+}
+
+body {
+    height: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    align-items: center;
+}
+
+.grid-container {
+    width: 300px;
+    height: 300px;
+    display: grid;
+    grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+    background: black;
+}
+
+.grid-container > div{
+    border: 1px solid red;
+    display: grid;
+    place-items: center;
+}
