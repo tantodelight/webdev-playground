@@ -1,3 +1,35 @@
+// const gameboard = () => {
+
+const slots = [
+    document.querySelector('.slot1'),
+    document.querySelector('.slot2'),
+    document.querySelector('.slot3'),
+    document.querySelector('.slot4'),
+    document.querySelector('.slot5'),
+    document.querySelector('.slot6'),
+    document.querySelector('.slot7'),
+    document.querySelector('.slot8'),
+    document.querySelector('.slot9')
+];
+
+const gameboard = [
+    '', '', '',
+    '', '', '',
+    '', '', ''
+];
+
+const winningCombinations = [
+    [0, 1, 2], // Top row
+    [3, 4, 5], // Middle row
+    [6, 7, 8], // Bottom row
+    [0, 3, 6], // Left column
+    [1, 4, 7], // Middle column
+    [2, 5, 8], // Right column
+    [0, 4, 8], // Left diagonal
+    [2, 4, 6]  // Right diagonal
+];
+
+const output = document.querySelector('.output');
 const board = document.querySelector('.grid-container');
 const restartButton = document.querySelector('.restart-btn');
 
@@ -15,23 +47,6 @@ board.addEventListener('click', (event) => {
 restartButton.addEventListener('click', () => {
     resetGame();
 });
-
-const gameboard = [
-'', '', '',
-'', '', '',
-'', '', ''
-];
-
-const winningCombinations = [
-  [0, 1, 2], // Top row
-  [3, 4, 5], // Middle row
-  [6, 7, 8], // Bottom row
-  [0, 3, 6], // Left column
-  [1, 4, 7], // Middle column
-  [2, 5, 8], // Right column
-  [0, 4, 8], // Left diagonal
-  [2, 4, 6]  // Right diagonal
-];
 
 function checkWinner() {
     for (const combination of winningCombinations) {
@@ -76,16 +91,9 @@ function resetGame() {
     displayGame();
 }
 
-// print board
-function printBoard() {
-    for (let i = 0; i < gameboard.length; i += 3) {
-        console.log(gameboard.slice(i, i + 3));
-    }
-}
-
 function playRound(index) {
     if (isGameOver) {
-        gameOutput = "Game Over! Restart ↻";
+        gameOutput = "Game already ended.";
         displayGame();
         return;
     }
@@ -129,23 +137,10 @@ function playRound(index) {
 }
 
 function displayGame() {
-    const output = document.querySelector('.output');
     output.textContent = gameOutput;
 
     restartButton.style.display = isGameOver ? 'block' : 'none';
     restartButton.textContent = 'Game Over! Restart ↻';
-
-    const slots = [
-        document.querySelector('.slot1'),
-        document.querySelector('.slot2'),
-        document.querySelector('.slot3'),
-        document.querySelector('.slot4'),
-        document.querySelector('.slot5'),
-        document.querySelector('.slot6'),
-        document.querySelector('.slot7'),
-        document.querySelector('.slot8'),
-        document.querySelector('.slot9')
-    ];
 
     for (let i = 0; i < gameboard.length; i++) {
         slots[i].textContent = gameboard[i];
