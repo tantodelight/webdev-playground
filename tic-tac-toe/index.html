@@ -10,19 +10,27 @@
 <body>
     <div class="wrapper">
         <h1>Welcome to my amazing tic tac toe</h1>
+        <section class="players" aria-label="Player names">
+            <label for="player-x">Player X
+                <input id="player-x" type="text" value="Player 1" maxlength="24" autocomplete="off">
+            </label>
+            <label for="player-o">Player O
+                <input id="player-o" type="text" value="Player 2" maxlength="24" autocomplete="off">
+            </label>
+        </section>
         <div class="grid-container">
-            <div class="slot1"></div>
-            <div class="slot2"></div>
-            <div class="slot3"></div>
-            <div class="slot4"></div>
-            <div class="slot5"></div>
-            <div class="slot6"></div>
-            <div class="slot7"></div>
-            <div class="slot8"></div>
-            <div class="slot9"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
+            <div class="slot"></div>
         </div>
-        <div class="output"></div>
-        <button class="restart-btn" type="button" aria-label="Restart game">Game Over! Restart ↻</button>
+        <div class="output" role="status" aria-live="polite"></div>
+        <button class="restart-btn" type="button">Start Game</button>
     </div>
 
 </body>
