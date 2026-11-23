@@ -1,3 +1,3 @@
-# webdev-playground
+# Web Development Playground
 
-A collection of small web projects, practice exercises, and experiments.
+A collection of beginner-friendly web development projects built while learning and practicing HTML, CSS, and JavaScript.

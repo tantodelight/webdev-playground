@@ -15,6 +15,70 @@ const readStatus = document.querySelector('#read-status');
 const updateBtn = document.querySelector('#update-btn');
 const cancelReadBtn = document.querySelector('#cancel-read-btn');
 
+class Library {
+    #myLibrary = [];
+    
+    addBook(title, author, pages, read) {
+        const myBook = new Book(title, author, pages, read);
+        const uniqueId = crypto.randomUUID();
+        myBook.id = uniqueId;
+        this.#myLibrary.push(myBook);
+    }
+    
+    discardBook(bookId) {
+        this.#myLibrary = this.#myLibrary.filter(item => item.id !== bookId);
+    }
+    
+    updateReadStatus(readFormInput) {
+        const bookId = readFormInput.replace('book-id-', '');
+        const bookToUpdate = this.#myLibrary.find(item => item.id === bookId);
+        bookToUpdate.isRead = readStatus.checked;
+        library.displayBooks();
+        readForm.reset();
+        readDialog.close();
+    }
+
+    displayBooks() {
+        gridContainer.textContent = '';
+    
+        // create column heads
+        const titleHead = document.createElement('div');
+        const authorHead = document.createElement('div');
+        const pagesHead = document.createElement('div');
+        const readStatusHead = document.createElement('div');
+        const lastHead = document.createElement('div');
+    
+        titleHead.textContent = 'Title';
+        authorHead.textContent = 'Author';
+        pagesHead.textContent = 'Pages';
+        readStatusHead.textContent = 'Read';
+    
+        gridContainer.append(titleHead, authorHead, pagesHead, readStatusHead, lastHead);
+    
+        // create book data
+        for (const item of this.#myLibrary) {
+            const title = document.createElement('div');
+            const author = document.createElement('div');
+            const pages = document.createElement('div');
+            const read = document.createElement('div');
+            read.classList.add('read-status');
+            read.classList.add(`book-id-${item.id}`);
+    
+            // add remove button
+            const removeBtn = document.createElement('div');
+            removeBtn.classList.add('remove-btn');
+            removeBtn.classList.add(`book-id-${item.id}`);
+            
+            title.textContent = item.title;
+            author.textContent = item.author;
+            pages.textContent = item.pages;
+            read.textContent = item.read();
+            removeBtn.textContent = '❌';
+    
+            gridContainer.append(title, author, pages, read, removeBtn);
+        }
+    }
+}
 
 newBookBtn.addEventListener('click', () => {
     bookDialog.showModal();
@@ -25,19 +89,20 @@ cancelBtn.addEventListener('click', () => {
     bookDialog.close();
 })
 
+// submit new book handler
 bookForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    addBookToLibrary(title.value, author.value, pages.value, read.checked);
-    displayBooks();
+    library.addBook(title.value, author.value, pages.value, read.checked);
+    library.displayBooks();
     bookForm.reset();
     bookDialog.close();
 })
 
-readFormInput = '';
+let readFormInput = '';
 
 readForm.addEventListener('submit', (e) => {
     e.preventDefault();
-    updateReadStatus(readFormInput);
+    library.updateReadStatus(readFormInput);
 })
 
 cancelReadBtn.addEventListener('click', () => {
@@ -45,10 +110,13 @@ cancelReadBtn.addEventListener('click', () => {
     readDialog.close();
 })
 
+// discard book handler
 gridContainer.addEventListener('click', (e) => {
     if (e.target.classList.contains('remove-btn')) {
-        discardBook(e);
-        displayBooks();
+        const bookClass = [...e.target.classList].find(className => className.startsWith('book-id-'));
+        const bookId = bookClass.replace('book-id-', '');
+        library.discardBook(bookId);
+        library.displayBooks();
     }
 
     if (e.target.classList.contains('read-status')) {
@@ -56,8 +124,6 @@ gridContainer.addEventListener('click', (e) => {
         readFormInput = [...e.target.classList].find(className => className.startsWith('book-id-'));
     }
 })
-
-let myLibrary = [];
 
 function Book(title, author, pages, isRead) {
     this.title = title,
@@ -75,74 +141,13 @@ function Book(title, author, pages, isRead) {
     } 
 }
 
-function addBookToLibrary(title, author, pages, read) {
-    const myBook = new Book(title, author, pages, read);
-    const uniqueId = crypto.randomUUID();
-    myBook.id = uniqueId;
-    myLibrary.push(myBook);
-}
+const library = new Library();
 
-function displayBooks() {
-    gridContainer.textContent = '';
+// add placeholder books
+library.addBook("The Hobbit", "J.R.R. Tolkien", 310, true)
+library.addBook("1984", "George Orwell", 328, false)
+library.addBook("Short", "A. Smith", 45, false)
+library.addBook("To Kill a Mockingbird", "Harper Lee", 281, true)
+library.addBook("Rich Dad Poor Dad", "Thomas Lee", 482, false)
 
-    // create column heads
-    const titleHead = document.createElement('div');
-    const authorHead = document.createElement('div');
-    const pagesHead = document.createElement('div');
-    const readStatusHead = document.createElement('div');
-    const lastHead = document.createElement('div');
-
-    titleHead.textContent = 'Title';
-    authorHead.textContent = 'Author';
-    pagesHead.textContent = 'Pages';
-    readStatusHead.textContent = 'Read';
-
-    gridContainer.append(titleHead, authorHead, pagesHead, readStatusHead, lastHead);
-
-    // create book data
-    for (const item of myLibrary) {
-        const title = document.createElement('div');
-        const author = document.createElement('div');
-        const pages = document.createElement('div');
-        const read = document.createElement('div');
-        read.classList.add('read-status');
-        read.classList.add(`book-id-${item.id}`);
-
-        // add remove button
-        const removeBtn = document.createElement('div');
-        removeBtn.classList.add('remove-btn');
-        removeBtn.classList.add(`book-id-${item.id}`);
-        
-        title.textContent = item.title;
-        author.textContent = item.author;
-        pages.textContent = item.pages;
-        read.textContent = item.read();
-        removeBtn.textContent = '❌';
-
-        gridContainer.append(title, author, pages, read, removeBtn);
-    }
-}
-
-function discardBook(e) {
-    const bookClass = [...e.target.classList].find(className => className.startsWith('book-id-'));
-    const bookId = bookClass.replace('book-id-', '');
-    myLibrary = myLibrary.filter(item => item.id !== bookId);
-}
-
-function updateReadStatus(readFormInput) {
-    const bookId = readFormInput.replace('book-id-', '');
-    const bookToUpdate = myLibrary.find(item => item.id === bookId);
-    bookToUpdate.isRead = readStatus.checked;
-    displayBooks();
-    readForm.reset();
-    readDialog.close();
-}
-
-
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 310, true)
-addBookToLibrary("1984", "George Orwell", 328, false)
-addBookToLibrary("Short", "A. Smith", 45, false)
-addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, true)
-addBookToLibrary("Rich Dad Poor Dad", "Thomas Lee", 482, false)
-
-displayBooks();
+library.displayBooks();
